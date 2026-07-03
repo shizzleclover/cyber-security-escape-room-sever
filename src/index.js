@@ -16,6 +16,9 @@ const scoresRoutes = require('./features/scores/scores.routes');
 const quizRoutes = require('./features/quiz/quiz.routes');
 const contentRoutes = require('./features/content/content.routes');
 const adminContentRoutes = require('./features/content/admin.routes');
+const resourcesRoutes = require('./features/resources/resources.routes');
+const adminResourcesRoutes = require('./features/resources/admin.routes');
+const adminRoutes = require('./features/admin/admin.routes');
 
 // Initialize Express app
 const app = express();
@@ -26,9 +29,12 @@ const app = express();
 app.use(helmet());
 
 // CORS configuration
+// Reflects the requesting origin (instead of a literal '*') so that
+// credentialed requests (cookie-based auth) are still allowed by the browser.
 app.use(
   cors({
-    origin: '*',
+    origin: true,
+    credentials: true,
   })
 );
 
@@ -59,7 +65,10 @@ app.use('/api/progress', progressRoutes);
 app.use('/api/scores', scoresRoutes);
 app.use('/api/quiz', quizRoutes);
 app.use('/api/content', contentRoutes);
+app.use('/api/resources', resourcesRoutes);
 app.use('/api/admin/content', adminContentRoutes);
+app.use('/api/admin/resources', adminResourcesRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

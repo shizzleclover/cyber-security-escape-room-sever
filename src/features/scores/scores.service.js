@@ -45,6 +45,8 @@ const getUserScores = async (userId) => {
 };
 
 /**
+ * Get a user's score for a specific room.
+ */
 const getRoomScore = async (userId, roomId) => {
   const score = await Score.findOne({ userId, roomId });
   return score;
