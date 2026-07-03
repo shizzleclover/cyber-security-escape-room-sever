@@ -1,0 +1,16 @@
+const AppError = require('../utils/AppError');
+
+/**
+ * Middleware factory to restrict a route to specific roles.
+ * Must run AFTER the authenticate middleware (relies on req.user).
+ *
+ * Usage: router.use(authenticate, authorize('admin'));
+ */
+const authorize = (...roles) => (req, res, next) => {
+  if (!req.user || !roles.includes(req.user.role)) {
+    return next(new AppError('You do not have permission to perform this action.', 403));
+  }
+  next();
+};
+
+module.exports = authorize;
