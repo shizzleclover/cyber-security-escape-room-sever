@@ -70,8 +70,12 @@ const getMe = asyncHandler(async (req, res) => {
  * Clear the authentication cookie.
  */
 const logout = asyncHandler(async (req, res) => {
+  // Match the attributes used when the cookie was set, otherwise the browser
+  // may refuse to clear it in production (secure/sameSite mismatch).
   res.cookie('token', '', {
     httpOnly: true,
+    secure: env.nodeEnv === 'production',
+    sameSite: 'lax',
     expires: new Date(0),
   });
 

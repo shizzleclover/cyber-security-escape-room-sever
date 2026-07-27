@@ -90,15 +90,43 @@ router.post(
 
 /**
  * GET /api/content/password-challenges
- * Returns password challenge data.
+ * Returns password challenge data with answer-revealing fields stripped,
+ * consistent with the quiz/phishing/social routes. (The current passwords
+ * room is fully client-side and does not consume this endpoint, but it must
+ * not leak answers to anyone who calls it directly.)
  */
 router.get(
   '/password-challenges',
   asyncHandler(async (req, res) => {
     const challenges = await contentService.getItems('password-challenge');
+
+    const clientChallenges = challenges.map((challenge) => {
+      // Omit the fields that give away the answer for each challenge type.
+      const {
+        correctOrder,       // rank-passwords
+        correctAnswers,     // reuse-scenario
+        ...rest
+      } = challenge;
+
+      // reuse-scenario: the per-account `samePassword` flag reveals the answer.
+      if (rest.scenario && Array.isArray(rest.scenario.accounts)) {
+        rest.scenario = {
+          ...rest.scenario,
+          accounts: rest.scenario.accounts.map(({ samePassword, ...acc }) => acc),
+        };
+      }
+
+      // password-manager: strip `correctAnswer` from each question.
+      if (Array.isArray(rest.questions)) {
+        rest.questions = rest.questions.map(({ correctAnswer, ...q }) => q);
+      }
+
+      return rest;
+    });
+
     res.status(200).json({
       success: true,
-      data: { challenges },
+      data: { challenges: clientChallenges },
     });
   })
 );
