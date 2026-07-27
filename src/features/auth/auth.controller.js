@@ -2,11 +2,16 @@ const asyncHandler = require('../../utils/asyncHandler');
 const authService = require('./auth.service');
 const env = require('../../config/env');
 
-// Cookie options for JWT token
+const isProd = env.nodeEnv === 'production';
+
+// Cookie options for JWT token.
+// In production the frontend (Vercel) and API (Fly) are on different sites,
+// so the cookie must use SameSite=None + Secure to be sent on cross-site
+// credentialed requests. Locally we keep Lax (Secure can't be used over http).
 const cookieOptions = {
   httpOnly: true,
-  secure: env.nodeEnv === 'production',
-  sameSite: 'lax',
+  secure: isProd,
+  sameSite: isProd ? 'none' : 'lax',
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
@@ -74,8 +79,8 @@ const logout = asyncHandler(async (req, res) => {
   // may refuse to clear it in production (secure/sameSite mismatch).
   res.cookie('token', '', {
     httpOnly: true,
-    secure: env.nodeEnv === 'production',
-    sameSite: 'lax',
+    secure: isProd,
+    sameSite: isProd ? 'none' : 'lax',
     expires: new Date(0),
   });
 
