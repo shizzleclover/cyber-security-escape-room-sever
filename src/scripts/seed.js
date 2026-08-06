@@ -20,20 +20,26 @@ const sources = {
 };
 
 // Mirrors the resources previously hardcoded in client/src/app/resources/page.tsx
+// Irish-focused: reporting bodies, guidance, and support organisations relevant
+// to the Irish audience the site serves.
 const resourceSeeds = [
-  { category: 'Reporting Fraud', title: 'Action Fraud (UK)', description: 'The UK national reporting centre for fraud and cybercrime.', url: 'https://www.actionfraud.police.uk/', icon: 'Landmark' },
-  { category: 'Reporting Fraud', title: 'An Garda Síochána', description: 'Report cybercrime to Irish police.', url: 'https://www.garda.ie/en/crime/fraud/', icon: 'Shield' },
+  { category: 'Reporting Fraud', title: 'An Garda Síochána', description: 'Report cybercrime and fraud to the Irish police.', url: 'https://www.garda.ie/en/crime/fraud/', icon: 'Shield' },
   { category: 'Reporting Fraud', title: 'FraudSMART (Ireland)', description: 'Banking and Payments Federation Ireland fraud awareness.', url: 'https://www.fraudsmart.ie/', icon: 'AlertTriangle' },
-  { category: 'Learning More', title: 'National Cyber Security Centre', description: 'UK government guidance on staying safe online.', url: 'https://www.ncsc.gov.uk/cyberaware', icon: 'Globe' },
+  { category: 'Reporting Fraud', title: 'European Consumer Centre Ireland', description: 'Free advice and help reporting cross-border scams.', url: 'https://www.eccireland.ie/', icon: 'Landmark' },
+  { category: 'Learning More', title: 'National Cyber Security Centre Ireland', description: 'Irish government guidance on staying safe online.', url: 'https://www.ncsc.gov.ie/', icon: 'Globe' },
   { category: 'Learning More', title: 'Age Action Ireland', description: 'Digital literacy programmes for older adults.', url: 'https://www.ageaction.ie/', icon: 'Users' },
   { category: 'Learning More', title: 'Google Phishing Quiz', description: 'Test your phishing detection skills with Google.', url: 'https://phishingquiz.withgoogle.com/', icon: 'FileText' },
   { category: 'Password Tools', title: 'Bitwarden', description: 'Free, open-source password manager. Works on all devices.', url: 'https://bitwarden.com/', icon: 'Lock' },
   { category: 'Password Tools', title: 'Have I Been Pwned', description: 'Check if your email has been in a data breach.', url: 'https://haveibeenpwned.com/', icon: 'AlertTriangle' },
   { category: 'Password Tools', title: 'How Secure Is My Password', description: 'See how long it would take to crack your password.', url: 'https://www.security.org/how-secure-is-my-password/', icon: 'Shield' },
   { category: 'Get Help', title: 'Citizens Information (Ireland)', description: 'Free information and advice on public services.', url: 'https://www.citizensinformation.ie/', icon: 'BookOpen' },
-  { category: 'Get Help', title: 'Age UK Helpline', description: 'Free advice line for older people: 0800 678 1602.', url: 'https://www.ageuk.org.uk/', icon: 'Phone' },
-  { category: 'Get Help', title: 'Victim Support', description: 'Free support for victims of crime including fraud.', url: 'https://www.victimsupport.org.uk/', icon: 'Users' },
+  { category: 'Get Help', title: 'ALONE', description: 'Support and companionship for older people in Ireland: 0818 222 024.', url: 'https://www.alone.ie/', icon: 'Phone' },
+  { category: 'Get Help', title: 'MABS', description: 'Free, confidential money advice and budgeting support.', url: 'https://www.mabs.ie/', icon: 'Users' },
 ];
+
+// Old UK-focused resources replaced by the Irish list above. Removed on re-seed
+// so a previously-seeded database does not keep showing them.
+const legacyUkResourceTitles = ['Action Fraud (UK)', 'Age UK Helpline', 'Victim Support'];
 
 const seed = async () => {
   await mongoose.connect(env.mongoUri);
@@ -54,16 +60,18 @@ const seed = async () => {
     console.log(`Seeded ${items.length} ${kind} item(s)`);
   }
 
-  // Resources: only seed if the collection is empty, so admin edits aren't clobbered on re-run
-  const existingResourceCount = await Resource.countDocuments();
-  if (existingResourceCount === 0) {
-    for (const [index, resource] of resourceSeeds.entries()) {
-      await Resource.create({ ...resource, order: index });
-    }
-    console.log(`Seeded ${resourceSeeds.length} resource(s)`);
-  } else {
-    console.log(`Skipped resource seeding (${existingResourceCount} already exist)`);
+  // Resources: upserted by title so re-running the seed refreshes the list
+  // (e.g. after switching the UK resources to Irish ones) while leaving any
+  // admin-created resources alone.
+  await Resource.deleteMany({ title: { $in: legacyUkResourceTitles } });
+  for (const [index, resource] of resourceSeeds.entries()) {
+    await Resource.findOneAndUpdate(
+      { title: resource.title },
+      { ...resource, order: index },
+      { upsert: true, new: true, runValidators: true }
+    );
   }
+  console.log(`Seeded ${resourceSeeds.length} resource(s)`);
 
   // Optional: promote a user to admin
   const adminFlagIndex = process.argv.indexOf('--admin');

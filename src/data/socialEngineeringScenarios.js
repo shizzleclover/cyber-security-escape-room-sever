@@ -13,8 +13,8 @@ const socialEngineeringScenarios = [
     messages: [
       {
         sender: 'unknown',
-        senderLabel: '+44 7911 234567',
-        text: 'Congratulations! You have been selected as the winner of our £5,000 Summer Prize Draw! To claim your prize, reply with your full name and bank sort code so we can transfer your winnings. Reply STOP to opt out.',
+        senderLabel: '+353 87 123 4567',
+        text: 'Congratulations! You have been selected as the winner of our €5,000 Summer Prize Draw! To claim your prize, reply with your full name and bank details so we can transfer your winnings. Reply STOP to opt out.',
         timestamp: '14:32',
       },
     ],
@@ -24,9 +24,9 @@ const socialEngineeringScenarios = [
         id: 'a',
         text: 'Reply with your name and bank details to claim the prize',
         isCorrect: false,
-        consequence: 'You send your bank sort code. Within hours, the scammers use this information combined with other data to set up a direct debit on your account. You lose £340 before you notice.',
+        consequence: 'You send your bank details. Within hours, the scammers use this information combined with other data to set up a direct debit on your account. You lose €340 before you notice.',
         lesson: 'Never share bank details with unknown contacts. Legitimate prize draws never ask for banking information via text message.',
-        externalLink: { text: 'Report Text Scams to NCSC', url: 'https://www.ncsc.gov.uk/collection/phishing-scams/report-scam-text-message' }
+        externalLink: { text: 'Report Scam Texts to An Garda Síochána', url: 'https://www.garda.ie/en/crime/fraud/' }
       },
       {
         id: 'b',
@@ -34,7 +34,7 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'By replying at all, you confirm to the scammers that your phone number is active and monitored. You start receiving even more scam messages over the following weeks.',
         lesson: 'Do not reply to suspicious messages at all, even to "unsubscribe." Replying confirms your number is active.',
-        externalLink: { text: 'ActionFraud Advice on Smishing', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/smishing' }
+        externalLink: { text: 'FraudSMART Advice on Smishing', url: 'https://www.fraudsmart.ie/' }
       },
       {
         id: 'c',
@@ -42,7 +42,7 @@ const socialEngineeringScenarios = [
         isCorrect: true,
         consequence: 'You delete the message and block the sender. The scam attempt fails completely. You report the number to 7726 (the spam reporting service).',
         lesson: 'If you did not enter a competition, you cannot have won one. Delete and block suspicious messages. You can report scam texts by forwarding them to 7726.',
-        externalLink: { text: 'How to Report Smishing', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/smishing' }
+        externalLink: { text: 'How to Report Smishing', url: 'https://www.garda.ie/en/crime/fraud/' }
       },
     ],
     redFlags: [
@@ -77,9 +77,9 @@ const socialEngineeringScenarios = [
         id: 'a',
         text: 'Follow their instructions and go to the website',
         isCorrect: false,
-        consequence: 'You install their "support tool" which is actually remote access software. The caller now has full control of your computer. They access your banking, install real malware, and demand £299 for "virus removal." Your bank account is compromised.',
+        consequence: 'You install their "support tool" which is actually remote access software. The caller now has full control of your computer. They access your banking, install real malware, and demand €299 for "virus removal." Your bank account is compromised.',
         lesson: 'Microsoft (and other tech companies) will NEVER call you unsolicited about computer problems. They have no way to detect issues on your personal computer.',
-        externalLink: { text: 'Microsoft Scam Reporting', url: 'https://www.microsoft.com/en-gb/concern/scam' }
+        externalLink: { text: 'Microsoft Scam Reporting', url: 'https://www.microsoft.com/en-ie/concern/scam' }
       },
       {
         id: 'b',
@@ -87,7 +87,7 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'They give you a fake reference number: "MS-SEC-2024-7742." This sounds official but means nothing. Feeling reassured, you follow their instructions. The scam proceeds as planned.',
         lesson: 'Scammers can make up reference numbers, employee IDs, and department names. These prove nothing. The only way to verify is to contact the company yourself through their official channels.',
-        externalLink: { text: 'Microsoft Scam Reporting', url: 'https://www.microsoft.com/en-gb/concern/scam' }
+        externalLink: { text: 'Microsoft Scam Reporting', url: 'https://www.microsoft.com/en-ie/concern/scam' }
       },
       {
         id: 'c',
@@ -95,7 +95,7 @@ const socialEngineeringScenarios = [
         isCorrect: true,
         consequence: 'You hang up. The scammer moves on to their next target. Your computer and accounts remain secure. You were never at risk because Microsoft does not make unsolicited support calls.',
         lesson: 'Hang up on unsolicited tech support calls. Microsoft, Apple, and your internet provider will never call you out of the blue about computer problems. If you are worried, contact the company directly using a number from their official website.',
-        externalLink: { text: 'Protect Yourself from Tech Scams', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/computer-software-service-fraud' }
+        externalLink: { text: 'Protect Yourself from Tech Scams', url: 'https://www.garda.ie/en/crime/fraud/' }
       },
     ],
     redFlags: [
@@ -129,13 +129,13 @@ const socialEngineeringScenarios = [
       {
         sender: 'unknown',
         senderLabel: 'Unknown Number',
-        text: 'I\'m in a bit of trouble Gran. I need to pay my rent by tonight or I\'ll be kicked out of my flat. My bank card is linked to my old phone and I can\'t access my money. Could you transfer me £500? I\'ll pay you back on Friday when I get paid, I promise 🙏',
+        text: 'I\'m in a bit of trouble Gran. I need to pay my rent by tonight or I\'ll be kicked out of my flat. My bank card is linked to my old phone and I can\'t access my money. Could you transfer me €500? I\'ll pay you back on Friday when I get paid, I promise 🙏',
         timestamp: '18:23',
       },
       {
         sender: 'unknown',
         senderLabel: 'Unknown Number',
-        text: 'Please don\'t tell Mum, she\'ll worry. Here are my friend\'s bank details for the transfer: Sort code 20-45-78, Account 41829365',
+        text: 'Please don\'t tell Mum, she\'ll worry. Here are my friend\'s bank details for the transfer: IBAN IE29 AIRB 931 152 1234 56',
         timestamp: '18:24',
       },
     ],
@@ -145,9 +145,9 @@ const socialEngineeringScenarios = [
         id: 'a',
         text: 'Transfer the money quickly so Emma doesn\'t lose her flat',
         isCorrect: false,
-        consequence: 'You transfer £500 to the account provided. It is not Emma\'s friend\'s account. It belongs to a money mule working for criminals. The money is gone within minutes and cannot be recovered. When you later call Emma on her real number, she has no idea what you are talking about. Her phone is fine.',
+        consequence: 'You transfer €500 to the account provided. It is not Emma\'s friend\'s account. It belongs to a money mule working for criminals. The money is gone within minutes and cannot be recovered. When you later call Emma on her real number, she has no idea what you are talking about. Her phone is fine.',
         lesson: 'This is called a "grandparent scam" or "Hi Mum/Dad" scam. Criminals send these messages to thousands of people hoping some will have a grandchild with that name. They exploit your love and protective instincts.',
-        externalLink: { text: 'ActionFraud on WhatsApp Scams', url: 'https://www.actionfraud.police.uk/alert/warning-issued-over-whatsapp-scam-that-has-already-cost-victims-1-5m' }
+        externalLink: { text: 'FraudSMART on "Hi Mum" Scams', url: 'https://www.fraudsmart.ie/' }
       },
       {
         id: 'b',
@@ -155,15 +155,15 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'You ask what you got her for Christmas. The scammer does not reply for 10 minutes, then says "Gran I\'m really stressed right now, can we do this later? I just really need the money." The emotional pressure continues. Many people give in at this point.',
         lesson: 'While asking a verification question is better than sending money immediately, scammers may find answers on social media or simply deflect with emotional pressure. The safest approach is always to verify through a separate channel.',
-        externalLink: { text: 'ActionFraud on WhatsApp Scams', url: 'https://www.actionfraud.police.uk/alert/warning-issued-over-whatsapp-scam-that-has-already-cost-victims-1-5m' }
+        externalLink: { text: 'FraudSMART on "Hi Mum" Scams', url: 'https://www.fraudsmart.ie/' }
       },
       {
         id: 'c',
         text: 'Call Emma on her usual phone number to check if this is really her',
         isCorrect: true,
-        consequence: 'You call Emma\'s normal number. She answers immediately. Her phone is fine. She is at home watching television and has no idea about these messages. You have just avoided losing £500 to a scammer.',
+        consequence: 'You call Emma\'s normal number. She answers immediately. Her phone is fine. She is at home watching television and has no idea about these messages. You have just avoided losing €500 to a scammer.',
         lesson: 'Always verify unexpected requests for money by contacting the person through their normal number or another trusted channel. Never use contact details provided in the suspicious message itself.',
-        externalLink: { text: 'Learn about the "Hi Mum" Scam', url: 'https://www.which.co.uk/consumer-rights/advice/how-to-spot-a-whatsapp-scam-aO72U1X9YxT1' }
+        externalLink: { text: 'An Garda Síochána: Fraud Advice', url: 'https://www.garda.ie/en/crime/fraud/' }
       },
     ],
     redFlags: [
@@ -200,9 +200,9 @@ const socialEngineeringScenarios = [
         id: 'a',
         text: 'Cooperate with the officer and provide your bank details',
         isCorrect: false,
-        consequence: 'You provide your bank details. The "officer" then asks you to transfer your savings to a "safe account." You transfer £12,000. The account belongs to criminals. The Gardaí never asked you to do this because it is not something any real police force would ever request.',
+        consequence: 'You provide your bank details. The "officer" then asks you to transfer your savings to a "safe account." You transfer €12,000. The account belongs to criminals. The Gardaí never asked you to do this because it is not something any real police force would ever request.',
         lesson: 'No police force, tax authority, or government agency will ever ask you to transfer money to a "safe account." This is always a scam, no matter how official the caller sounds.',
-        externalLink: { text: 'Police Impersonator Scams', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/courier-fraud' }
+        externalLink: { text: 'Police Impersonator Scams', url: 'https://www.garda.ie/en/crime/fraud/' }
       },
       {
         id: 'b',
@@ -210,7 +210,7 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'They give you a badge number: "GS-4471." They say "Of course, you can verify. Call the main Garda switchboard." However, they stay on the line. When you think you have hung up and dialled the Garda number, you are actually still connected to the scammer, who answers pretending to be the switchboard.',
         lesson: 'Scammers can keep the phone line open even after you think you have hung up (especially on landlines). Always use a DIFFERENT phone to verify, or wait at least 5 minutes before calling back.',
-        externalLink: { text: 'Protect Yourself from Phone Fraud', url: 'https://www.takefive-stopfraud.org.uk/' }
+        externalLink: { text: 'FraudSMART: Protect Yourself from Phone Fraud', url: 'https://www.fraudsmart.ie/' }
       },
       {
         id: 'c',
@@ -218,7 +218,7 @@ const socialEngineeringScenarios = [
         isCorrect: true,
         consequence: 'You hang up and use your mobile to call your local Garda station. They confirm that no such investigation exists and that this is a known scam. They thank you for reporting it. Your money is safe.',
         lesson: 'Real police will never ask you to transfer money, keep a call secret from your bank, or pressure you to act immediately. Always verify by calling the organisation directly on a number you find yourself, ideally from a different phone.',
-        externalLink: { text: 'Take Five To Stop Fraud', url: 'https://www.takefive-stopfraud.org.uk/' }
+        externalLink: { text: 'FraudSMART: Stop Fraud Before It Happens', url: 'https://www.fraudsmart.ie/' }
       },
     ],
     redFlags: [
@@ -253,7 +253,7 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'You read them the code. The caller immediately uses the code to bypass your 2FA and access the company network. They deploy ransomware across the entire company network. You just bypassed your own security.',
         lesson: 'Never share an authenticator code, SMS code, or password with anyone, even IT support. Real IT will never need your password or 2FA code to fix an issue.',
-        externalLink: { text: 'NCSC Guidance on MFA', url: 'https://www.ncsc.gov.uk/guidance/multi-factor-authentication-mfa' }
+        externalLink: { text: 'NCSC Ireland Guidance on MFA', url: 'https://www.ncsc.gov.ie/' }
       },
       {
         id: 'b',
@@ -261,7 +261,7 @@ const socialEngineeringScenarios = [
         isCorrect: true,
         consequence: 'You hang up and dial the internal IT number. The real IT department confirms there is no issue with your account and no "Mark" working there. You just saved the company from a major breach.',
         lesson: 'Always verify unexpected requests for credentials by calling back via an established, trusted internal channel. Never trust caller ID.',
-        externalLink: { text: 'NCSC Social Engineering Guidance', url: 'https://www.ncsc.gov.uk/collection/phishing-scams' }
+        externalLink: { text: 'NCSC Ireland Social Engineering Guidance', url: 'https://www.ncsc.gov.ie/' }
       },
       {
         id: 'c',
@@ -269,7 +269,7 @@ const socialEngineeringScenarios = [
         isCorrect: false,
         consequence: 'They confidently rattle off an ID number "IT-4991". You give them the code. They breach your account. Employee IDs mean nothing if the caller cannot be verified through official channels.',
         lesson: 'Scammers have no problem making up fake IDs or using stolen information to sound legitimate.',
-        externalLink: { text: 'Take Five To Stop Fraud', url: 'https://www.takefive-stopfraud.org.uk/' }
+        externalLink: { text: 'FraudSMART: Stop Fraud Before It Happens', url: 'https://www.fraudsmart.ie/' }
       },
     ],
     redFlags: [

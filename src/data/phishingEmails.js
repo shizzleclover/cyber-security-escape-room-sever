@@ -37,7 +37,7 @@ The Securty Team`,
     ],
     hint: 'Look carefully at the sender\'s email address. Does the domain look like it belongs to a real company?',
     lesson: 'Phishing emails often rely on spelling mistakes and urgency. Legitimate companies will never threaten you with immediate account suspension.',
-    externalLink: { text: 'NCSC: Spotting Phishing Emails', url: 'https://www.ncsc.gov.uk/collection/phishing-scams' }
+    externalLink: { text: 'NCSC Ireland: Staying Safe Online', url: 'https://www.ncsc.gov.ie/' }
   },
   {
     id: 2,
@@ -76,41 +76,41 @@ Unsubscribe from marketing emails.`,
     ],
     hint: 'Check where the links actually lead. Do they go to a real Netflix address?',
     lesson: 'Legitimate marketing emails usually come from a subdomain (like mailer.netflix.com) and do not contain urgent threats.',
-    externalLink: { text: 'How to verify email senders', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/phishing' }
+    externalLink: { text: 'How to verify email senders', url: 'https://www.garda.ie/en/crime/fraud/' }
   },
   {
     id: 3,
     type: 'phishing',
     difficulty: 'medium',
-    senderName: 'Royal Mail Delivery',
-    senderEmail: 'delivery-notification@royalmail-tracking.co',
+    senderName: 'An Post Delivery',
+    senderEmail: 'delivery-notification@anpost-tracking.co',
     subject: 'Your parcel could not be delivered - action required',
     timestamp: '9:41 AM',
     body: `Hello,
 
 We attempted to deliver your parcel today but no one was available to sign for it.
 
-To reschedule your delivery, please confirm your address and pay the redelivery fee of £1.99:
+To reschedule your delivery, please confirm your address and pay the redelivery fee of €1.99:
 
-[Reschedule My Delivery](http://royalmail-tracking.co/redelivery?id=RM29485721)
+[Reschedule My Delivery](http://anpost-tracking.co/redelivery?id=AP29485721)
 
 Your parcel will be returned to sender if not rescheduled within 48 hours.
 
-Royal Mail Customer Service
-Tracking Reference: RM29485721GB`,
+An Post Customer Service
+Tracking Reference: AP29485721`,
     links: [
-      { text: 'Reschedule My Delivery', actualUrl: 'http://royalmail-tracking.co/redelivery?id=RM29485721' },
+      { text: 'Reschedule My Delivery', actualUrl: 'http://anpost-tracking.co/redelivery?id=AP29485721' },
     ],
     redFlags: [
-      'Domain is "royalmail-tracking.co" not the real "royalmail.com"',
-      'Asks for payment (Royal Mail does not charge redelivery fees)',
+      'Domain is "anpost-tracking.co" not the real "anpost.com"',
+      'Asks for payment (An Post does not charge redelivery fees)',
       'Creates urgency ("48 hours" or returned)',
       'No specific parcel details or your actual name',
       'Uses HTTP not HTTPS',
     ],
-    hint: 'Royal Mail\'s real website is royalmail.com. Look at the domain in the sender\'s email address carefully.',
-    lesson: 'Scammers often impersonate delivery services because many people are expecting packages. Royal Mail will never ask you for a fee in an email.',
-    externalLink: { text: 'Royal Mail: Typical Scams', url: 'https://www.royalmail.com/help/scam-examples' }
+    hint: 'An Post\'s real website is anpost.com. Look at the domain in the sender\'s email address carefully.',
+    lesson: 'Scammers often impersonate delivery services because many people are expecting packages. An Post will never ask you for a fee in an email.',
+    externalLink: { text: 'An Garda Síochána: Report Fraud', url: 'https://www.garda.ie/en/crime/fraud/' }
   },
   {
     id: 4,
@@ -128,7 +128,7 @@ This month you earned:
 • 142 points from in-store shopping
 • 28 points from Tesco online
 
-Your total balance: 3,847 points (worth £38.47 in vouchers)
+Your total balance: 3,847 points (worth €38.47 in vouchers)
 
 Your vouchers expire on 30 November 2026. You can spend them in store or exchange them for Reward Partner vouchers worth up to 3x more.
 
@@ -150,7 +150,7 @@ Tesco Clubcard Team`,
     ],
     hint: 'Look at the specific details in this email. Would a scammer know your exact Clubcard points balance?',
     lesson: 'Personalization is key. Legitimate businesses will often use information that only they know about your account history.',
-    externalLink: { text: 'Report a Scam to ActionFraud', url: 'https://www.actionfraud.police.uk/reporting-fraud-and-cyber-crime' }
+    externalLink: { text: 'Report a Scam to Gardaí', url: 'https://www.garda.ie/en/crime/fraud/' }
   },
   {
     id: 5,
@@ -217,7 +217,7 @@ Human Resources`,
     ],
     hint: 'Does your HR normally threaten suspension over an email handbook? Where does that link actually go?',
     lesson: 'Spear phishing targets employees using internal jargon (HR, handbooks) to harvest login credentials.',
-    externalLink: { text: 'NCSC: Mitigating Phishing in the Workplace', url: 'https://www.ncsc.gov.uk/guidance/phishing' }
+    externalLink: { text: 'NCSC Ireland: Workplace Phishing', url: 'https://www.ncsc.gov.ie/' }
   },
   {
     id: 7,
@@ -262,7 +262,7 @@ This is an automated message. Please do not reply to this email.`,
     ],
     hint: 'Not all emails from banks are scams. Look at whether this email is asking you to DO something or just informing you.',
     lesson: 'Banks do email customers, but legitimate bank emails rarely ask you to log in via a link to resolve an issue.',
-    externalLink: { text: 'Take Five To Stop Fraud', url: 'https://www.takefive-stopfraud.org.uk/' }
+    externalLink: { text: 'FraudSMART: Stop Fraud Before It Happens', url: 'https://www.fraudsmart.ie/' }
   },
   {
     id: 8,
@@ -300,7 +300,7 @@ Dublin Castle, Dublin 2`,
     ],
     hint: 'Revenue\'s real website is revenue.ie. They process refunds through your ROS account, never through email links.',
     lesson: 'Government tax agencies will never ask for bank details via email. If you owe or are owed money, they communicate via secure portals.',
-    externalLink: { text: 'ActionFraud: Fake Tax Scams', url: 'https://www.actionfraud.police.uk/a-z-of-fraud/hmrc-scams' }
+    externalLink: { text: 'Revenue: Reporting Scams', url: 'https://www.revenue.ie/en/corporate/information-about-revenue/security/reporting-scams.aspx' }
   },
   {
     id: 9,
@@ -371,7 +371,7 @@ The GitHub Team`,
     ],
     hint: 'Examine the domain exactly. Does the link look exactly like the site you expect?',
     lesson: 'Legitimate security alerts will point to exact domains and offer "If you did this, ignore" without inducing panic deadlines.',
-    externalLink: { text: 'NCSC: Understanding MFA and Security Keys', url: 'https://www.ncsc.gov.uk/guidance/multi-factor-authentication-mfa' }
+    externalLink: { text: 'NCSC Ireland: Understanding MFA and Security Keys', url: 'https://www.ncsc.gov.ie/' }
   }
 ];
 

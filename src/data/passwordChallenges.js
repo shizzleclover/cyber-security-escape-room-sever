@@ -40,7 +40,7 @@ const passwordChallenges = [
       },
     ],
     correctOrder: ['a', 'b', 'c', 'd'],
-    externalLink: { text: 'NCSC Password Guidance', url: 'https://www.ncsc.gov.uk/collection/passwords' }
+    externalLink: { text: 'NCSC Ireland Password Guidance', url: 'https://www.ncsc.gov.ie/' }
   },
   {
     id: 2,

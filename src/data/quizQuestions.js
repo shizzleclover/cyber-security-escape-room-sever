@@ -142,7 +142,7 @@ const quizQuestions = [
   {
     id: 11,
     topic: 'social-engineering',
-    question: 'A text message says "Hi Gran, I\'ve lost my phone and I\'m using a friend\'s. Can you send me £200 for an emergency?" What is the safest response?',
+    question: 'A text message says "Hi Gran, I\'ve lost my phone and I\'m using a friend\'s. Can you send me €200 for an emergency?" What is the safest response?',
     options: [
       'Send the money immediately because your grandchild might be in danger',
       'Ask them a personal question only your real grandchild would know',
@@ -155,7 +155,7 @@ const quizQuestions = [
   {
     id: 12,
     topic: 'social-engineering',
-    question: 'You receive a message saying you have won a prize in a competition. To claim it, you need to pay a "processing fee" of £50. This is most likely:',
+    question: 'You receive a message saying you have won a prize in a competition. To claim it, you need to pay a "processing fee" of €50. This is most likely:',
     options: [
       'A legitimate prize that requires a standard fee',
       'A scam, because real prizes never require payment to claim',
