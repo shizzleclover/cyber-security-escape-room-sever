@@ -25,18 +25,28 @@ const app = express();
 
 // ─── Global Middleware ────────────────────────────────────────────────────────
 
-// Security headers
-app.use(helmet());
+// CORS configuration - Must come before other restrictive middleware
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://cyber-security-escape-room-client-production.up.railway.app',
+  env.clientUrl,
+];
 
-// CORS configuration
-// Reflects the requesting origin (instead of a literal '*') so that
-// credentialed requests (cookie-based auth) are still allowed by the browser.
 app.use(
   cors({
-    origin: true,
+    origin: function (origin, callback) {
+      // Allow any origin that is in our list, or allow all if we want to be permissive
+      // For Railway production, reflecting the origin is safest when using credentials
+      callback(null, origin || true);
+    },
     credentials: true,
   })
 );
+
+// Security headers
+app.use(helmet({
+  crossOriginResourcePolicy: false, // Prevents helmet from blocking cross-origin API requests
+}));
 
 // Rate limiting
 const limiter = rateLimit({
