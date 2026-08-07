@@ -81,7 +81,7 @@ const deleteUser = async (userId) => {
  * Aggregate platform-wide analytics for the admin overview dashboard.
  */
 const getOverview = async () => {
-  const [totalUsers, usersByAgeGroup, scoresByRoom, quizzes, recentUsers] = await Promise.all([
+  const [totalUsers, usersByAgeGroup, scoresByRoom, quizzes, recentUsers, allCompletedProgress] = await Promise.all([
     User.countDocuments(),
     User.aggregate([{ $group: { _id: '$ageGroup', count: { $sum: 1 } } }]),
     Score.aggregate([
@@ -96,6 +96,7 @@ const getOverview = async () => {
     ]),
     QuizResponse.find().lean(),
     User.find().sort({ createdAt: -1 }).limit(5).select('name email ageGroup createdAt').lean(),
+    Progress.find({ status: 'completed' }).lean(),
   ]);
 
   // Learning-gain: average (post% - pre%) across users who have both
@@ -120,6 +121,16 @@ const getOverview = async () => {
     };
   });
 
+  // Calculate overall completion rate and completed courses
+  const totalCompletedCourses = allCompletedProgress.length;
+  const completedByUser = {};
+  allCompletedProgress.forEach((p) => {
+    const key = String(p.userId);
+    completedByUser[key] = (completedByUser[key] || 0) + 1;
+  });
+  const usersCompletedAll = Object.values(completedByUser).filter((count) => count >= 3).length;
+  const overallCompletionRate = totalUsers ? Math.round((usersCompletedAll / totalUsers) * 100) : 0;
+
   return {
     totalUsers,
     usersByAgeGroup: usersByAgeGroup.map((g) => ({ ageGroup: g._id, count: g.count })),
@@ -127,6 +138,8 @@ const getOverview = async () => {
     quizzesTaken: { pre: quizzes.filter((q) => q.type === 'pre').length, post: quizzes.filter((q) => q.type === 'post').length },
     avgLearningGain,
     recentUsers,
+    totalCompletedCourses,
+    overallCompletionRate,
   };
 };
 
