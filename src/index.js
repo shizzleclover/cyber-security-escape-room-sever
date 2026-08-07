@@ -25,23 +25,25 @@ const app = express();
 
 // ─── Global Middleware ────────────────────────────────────────────────────────
 
-// CORS configuration - Must come before other restrictive middleware
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://cyber-security-escape-room-client-production.up.railway.app',
-  env.clientUrl,
-];
-
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Allow any origin that is in our list, or allow all if we want to be permissive
-      // For Railway production, reflecting the origin is safest when using credentials
-      callback(null, origin || true);
-    },
-    credentials: true,
-  })
-);
+// Custom CORS configuration - Extremely permissive to avoid production issues
+app.use((req, res, next) => {
+  const origin = req.headers.origin;
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // Fallback if no origin is provided
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  next();
+});
 
 // Security headers
 app.use(helmet({
