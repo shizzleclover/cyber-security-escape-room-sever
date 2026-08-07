@@ -116,39 +116,39 @@ Tracking Reference: AP29485721`,
     id: 4,
     type: 'legitimate',
     difficulty: 'medium',
-    senderName: 'Tesco Clubcard',
-    senderEmail: 'clubcard@email.tesco.com',
-    subject: 'Your monthly Clubcard statement is ready',
+    senderName: 'Dunnes Stores VALUEclub',
+    senderEmail: 'valueclub@email.dunnesstores.com',
+    subject: 'Your monthly VALUEclub statement is ready',
     timestamp: '8:00 AM',
     body: `Hi Margaret,
 
-Your Clubcard statement for May is now available.
+Your VALUEclub statement for May is now available.
 
 This month you earned:
 • 142 points from in-store shopping
-• 28 points from Tesco online
+• 28 points from Dunnes Stores online
 
 Your total balance: 3,847 points (worth €38.47 in vouchers)
 
-Your vouchers expire on 30 November 2026. You can spend them in store or exchange them for Reward Partner vouchers worth up to 3x more.
+Your vouchers expire on 30 November 2026. You can spend them in store or exchange them for Reward Partner vouchers.
 
-View your full statement in the Tesco app or at tesco.com/clubcard.
+View your full statement in the Dunnes Stores app or at dunnesstores.com/valueclub.
 
 Thanks for shopping with us,
-Tesco Clubcard Team`,
+Dunnes Stores VALUEclub Team`,
     links: [
-      { text: 'tesco.com/clubcard', actualUrl: 'https://www.tesco.com/clubcard' },
+      { text: 'dunnesstores.com/valueclub', actualUrl: 'https://www.dunnesstores.com/valueclub' },
     ],
     redFlags: [],
     legitimateIndicators: [
-      'Sender uses official Tesco subdomain (email.tesco.com)',
+      'Sender uses official Dunnes Stores subdomain (email.dunnesstores.com)',
       'Addresses you by name',
-      'Contains specific account details only Tesco would know',
+      'Contains specific account details only Dunnes Stores would know',
       'No urgency or pressure to click immediately',
-      'Links go to genuine tesco.com',
+      'Links go to genuine dunnesstores.com',
       'Does not ask for any personal information or payment',
     ],
-    hint: 'Look at the specific details in this email. Would a scammer know your exact Clubcard points balance?',
+    hint: 'Look at the specific details in this email. Would a scammer know your exact VALUEclub points balance?',
     lesson: 'Personalization is key. Legitimate businesses will often use information that only they know about your account history.',
     externalLink: { text: 'Report a Scam to Gardaí', url: 'https://www.garda.ie/en/crime/fraud/' }
   },
