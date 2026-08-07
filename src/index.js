@@ -25,8 +25,13 @@ const app = express();
 
 // ─── Global Middleware ────────────────────────────────────────────────────────
 
+// Enable request logging in all environments to trace production errors
+app.use(morgan('dev'));
+
 // Custom CORS configuration - Extremely permissive to avoid production issues
 app.use((req, res, next) => {
+  console.log(`[CORS Middleware] Incoming ${req.method} request to ${req.originalUrl}`);
+  
   const origin = req.headers.origin;
   if (origin) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -39,6 +44,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   
   if (req.method === 'OPTIONS') {
+    console.log(`[CORS Middleware] Handled OPTIONS preflight for ${req.originalUrl}`);
     return res.status(200).end();
   }
   
@@ -64,11 +70,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // Cookie parsing
 app.use(cookieParser());
-
-// Request logging (development only)
-if (env.nodeEnv === 'development') {
-  app.use(morgan('dev'));
-}
 
 // ─── API Routes ───────────────────────────────────────────────────────────────
 
@@ -106,11 +107,26 @@ app.use(errorHandler);
 
 // ─── Server Start ─────────────────────────────────────────────────────────────
 
+// Catch unhandled errors that might crash the server in production
+process.on('uncaughtException', (err) => {
+  console.error('[CRITICAL] Uncaught Exception:', err);
+  process.exit(1);
+});
+process.on('unhandledRejection', (err) => {
+  console.error('[CRITICAL] Unhandled Rejection:', err);
+  process.exit(1);
+});
+
 const startServer = async () => {
-  await connectDB();
-  app.listen(env.port, () => {
-    console.log(`Server running in ${env.nodeEnv} mode on port ${env.port}`);
-  });
+  try {
+    await connectDB();
+    app.listen(env.port, () => {
+      console.log(`Server running in ${env.nodeEnv} mode on port ${env.port}`);
+    });
+  } catch (error) {
+    console.error(`[CRITICAL] Server failed to start:`, error);
+    process.exit(1);
+  }
 };
 
 startServer();
