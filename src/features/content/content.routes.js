@@ -193,4 +193,63 @@ router.post(
   })
 );
 
+
+/**
+ * GET /api/content/custom-room/:roomId
+ * Fetch custom room questions for a specific room (stripping correct answers).
+ */
+router.get(
+  '/custom-room/:roomId',
+  asyncHandler(async (req, res) => {
+    const { roomId } = req.params;
+    
+    // Fetch all custom room questions
+    const allQuestions = await contentService.getItems('custom-room-question');
+    
+    // Filter for the specific room
+    const roomQuestions = allQuestions.filter(q => q.roomId === roomId);
+
+    const clientQuestions = roomQuestions.map(({ id, question, options }) => ({
+      id,
+      question,
+      options: options.map(opt => ({ id: opt.id, text: opt.text })) // Strip correctness and explanations
+    }));
+
+    res.status(200).json({
+      success: true,
+      data: { questions: clientQuestions },
+    });
+  })
+);
+
+/**
+ * POST /api/content/custom-room/:roomId/check
+ * Check an answer for a custom room question.
+ */
+router.post(
+  '/custom-room/:roomId/check',
+  asyncHandler(async (req, res) => {
+    const { roomId } = req.params;
+    const { questionId, answerId } = req.body;
+
+    const question = await contentService.getItem('custom-room-question', questionId);
+    if (!question || question.roomId !== roomId) {
+      return res.status(404).json({ success: false, message: 'Question not found in this room.' });
+    }
+
+    const selectedOption = question.options.find(o => o.id === answerId);
+    if (!selectedOption) {
+      return res.status(400).json({ success: false, message: 'Invalid answer option.' });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        correct: selectedOption.isCorrect,
+        explanation: selectedOption.explanation,
+      },
+    });
+  })
+);
+
 module.exports = router;

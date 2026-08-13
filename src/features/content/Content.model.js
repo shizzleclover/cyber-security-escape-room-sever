@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const CONTENT_KINDS = ['quiz-question', 'phishing-email', 'password-challenge', 'social-scenario'];
+const CONTENT_KINDS = ['quiz-question', 'phishing-email', 'password-challenge', 'social-scenario', 'custom-room-question'];
 
 /**
  * Generic game-content document.

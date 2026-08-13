@@ -18,6 +18,8 @@ const contentRoutes = require('./features/content/content.routes');
 const adminContentRoutes = require('./features/content/admin.routes');
 const resourcesRoutes = require('./features/resources/resources.routes');
 const adminResourcesRoutes = require('./features/resources/admin.routes');
+const roomsRoutes = require('./features/rooms/rooms.routes');
+const adminRoomsRoutes = require('./features/rooms/admin.routes');
 const adminRoutes = require('./features/admin/admin.routes');
 
 // Initialize Express app
@@ -81,6 +83,8 @@ app.use('/api/content', contentRoutes);
 app.use('/api/resources', resourcesRoutes);
 app.use('/api/admin/content', adminContentRoutes);
 app.use('/api/admin/resources', adminResourcesRoutes);
+app.use('/api/rooms', roomsRoutes);
+app.use('/api/admin/rooms', adminRoomsRoutes);
 app.use('/api/admin', adminRoutes);
 
 // Health check endpoint
