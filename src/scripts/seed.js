@@ -37,9 +37,6 @@ const resourceSeeds = [
   { category: 'Get Help', title: 'MABS', description: 'Free, confidential money advice and budgeting support.', url: 'https://www.mabs.ie/', icon: 'Users' },
 ];
 
-// Old UK-focused resources replaced by the Irish list above. Removed on re-seed
-// so a previously-seeded database does not keep showing them.
-const legacyUkResourceTitles = ['Action Fraud (UK)', 'Age UK Helpline', 'Victim Support'];
 
 const seed = async () => {
   await mongoose.connect(env.mongoUri);
@@ -61,9 +58,7 @@ const seed = async () => {
   }
 
   // Resources: upserted by title so re-running the seed refreshes the list
-  // (e.g. after switching the UK resources to Irish ones) while leaving any
-  // admin-created resources alone.
-  await Resource.deleteMany({ title: { $in: legacyUkResourceTitles } });
+  // while leaving any admin-created resources alone.
   for (const [index, resource] of resourceSeeds.entries()) {
     await Resource.findOneAndUpdate(
       { title: resource.title },
