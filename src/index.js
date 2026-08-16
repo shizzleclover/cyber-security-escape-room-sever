@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 
 const env = require('./config/env');
 const connectDB = require('./config/db');
@@ -57,6 +58,9 @@ app.use((req, res, next) => {
 app.use(helmet({
   crossOriginResourcePolicy: false, // Prevents helmet from blocking cross-origin API requests
 }));
+
+// Compress responses
+app.use(compression());
 
 // Rate limiting
 const limiter = rateLimit({
