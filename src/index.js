@@ -63,10 +63,13 @@ app.use(helmet({
 // Compress responses
 app.use(compression());
 
-// Rate limiting
+// Rate limiting — generous window for educational interactive platform
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per window
+  max: 3000, // 3000 requests per 15 min per client IP
+  standardHeaders: true,
+  legacyHeaders: false,
+  validate: { trustProxy: false },
   message: { success: false, message: 'Too many requests, please try again later.' },
 });
 app.use('/api/', limiter);
