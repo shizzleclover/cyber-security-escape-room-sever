@@ -1,3 +1,11 @@
+/**
+ * @fileoverview progress.controller.js
+ * @module progress/progress.controller.js
+ * 
+ * Express Route Controller for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const asyncHandler = require('../../utils/asyncHandler');
 const progressService = require('./progress.service');
 

@@ -1,4 +1,12 @@
 /**
+ * @fileoverview phishingEmails.js
+ * @module data/phishingEmails.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
+/**
  * Phishing Room Email Data
  * 10 emails in progressive difficulty order.
  * Mix of phishing (6) and legitimate (4) emails.

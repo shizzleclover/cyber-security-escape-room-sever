@@ -1,3 +1,11 @@
+/**
+ * @fileoverview progress.service.js
+ * @module progress/progress.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const Progress = require('./Progress.model');
 const AppError = require('../../utils/AppError');
 

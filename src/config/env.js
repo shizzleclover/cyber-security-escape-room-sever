@@ -1,3 +1,11 @@
+/**
+ * @fileoverview env.js
+ * @module config/env.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 require('dotenv').config();
 
 const env = {

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview scores.service.js
+ * @module scores/scores.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const Score = require('./Score.model');
 const AppError = require('../../utils/AppError');
 

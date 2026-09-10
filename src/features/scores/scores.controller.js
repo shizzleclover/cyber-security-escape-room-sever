@@ -1,3 +1,11 @@
+/**
+ * @fileoverview scores.controller.js
+ * @module scores/scores.controller.js
+ * 
+ * Express Route Controller for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const asyncHandler = require('../../utils/asyncHandler');
 const scoresService = require('./scores.service');
 

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Content.model.js
+ * @module content/Content.model.js
+ * 
+ * Mongoose Database Model for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 
 const CONTENT_KINDS = ['quiz-question', 'phishing-email', 'password-challenge', 'social-scenario', 'custom-room-question'];

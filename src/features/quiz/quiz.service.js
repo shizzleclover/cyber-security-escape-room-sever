@@ -1,3 +1,11 @@
+/**
+ * @fileoverview quiz.service.js
+ * @module quiz/quiz.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const QuizResponse = require('./QuizResponse.model');
 const AppError = require('../../utils/AppError');
 const contentService = require('../content/content.service');

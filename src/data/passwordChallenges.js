@@ -1,4 +1,12 @@
 /**
+ * @fileoverview passwordChallenges.js
+ * @module data/passwordChallenges.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
+/**
  * Password Room Challenge Data
  * 4 challenges that progressively teach password security concepts.
  */

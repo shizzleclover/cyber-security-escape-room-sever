@@ -1,3 +1,11 @@
+/**
+ * @fileoverview resources.routes.js
+ * @module resources/resources.routes.js
+ * 
+ * Express Router Definition for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const express = require('express');
 const router = express.Router();
 const asyncHandler = require('../../utils/asyncHandler');

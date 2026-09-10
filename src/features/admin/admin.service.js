@@ -1,3 +1,11 @@
+/**
+ * @fileoverview admin.service.js
+ * @module admin/admin.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const User = require('../auth/User.model');
 const Progress = require('../progress/Progress.model');
 const Score = require('../scores/Score.model');

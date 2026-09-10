@@ -1,4 +1,12 @@
 /**
+ * @fileoverview quizQuestions.js
+ * @module data/quizQuestions.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
+/**
  * Pre/Post Assessment Quiz Questions
  * These 15 questions are used for both the pre-assessment (before rooms)
  * and post-assessment (after rooms) to measure learning gains.

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview auth.controller.js
+ * @module auth/auth.controller.js
+ * 
+ * Express Route Controller for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const asyncHandler = require('../../utils/asyncHandler');
 const authService = require('./auth.service');
 const env = require('../../config/env');

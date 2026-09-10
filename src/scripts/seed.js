@@ -1,4 +1,12 @@
 /**
+ * @fileoverview seed.js
+ * @module scripts/seed.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
+/**
  * Seed script: migrates the bundled static game content into MongoDB
  * and optionally promotes a user to admin.
  *

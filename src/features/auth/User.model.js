@@ -1,6 +1,19 @@
+/**
+ * @fileoverview User.model.js
+ * @module auth/User.model.js
+ * 
+ * Mongoose Database Model for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
+/**
+ * Mongoose schema definition for the User model.
+ * Stores basic authentication credentials along with demographic data
+ * (ageGroup, digitalConfidence) used for the thesis research correlation.
+ */
 const userSchema = new mongoose.Schema(
   {
     name: {

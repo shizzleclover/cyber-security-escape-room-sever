@@ -1,3 +1,11 @@
+/**
+ * @fileoverview db.js
+ * @module config/db.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {

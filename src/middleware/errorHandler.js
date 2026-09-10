@@ -1,3 +1,11 @@
+/**
+ * @fileoverview errorHandler.js
+ * @module middleware/errorHandler.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const env = require('../config/env');
 
 const errorHandler = (err, req, res, next) => {

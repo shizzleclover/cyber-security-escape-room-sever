@@ -1,3 +1,11 @@
+/**
+ * @fileoverview clearResources.js
+ * @module scripts/clearResources.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 const env = require('../config/env');
 const Resource = require('../features/resources/Resource.model');

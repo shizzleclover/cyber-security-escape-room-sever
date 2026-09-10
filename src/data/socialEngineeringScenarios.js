@@ -1,4 +1,12 @@
 /**
+ * @fileoverview socialEngineeringScenarios.js
+ * @module data/socialEngineeringScenarios.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
+/**
  * Social Engineering Room Scenario Data
  * 5 scenarios presented as simulated communications.
  * Each has a setup, decision point, consequences, lesson, and externalLink.

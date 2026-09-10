@@ -1,3 +1,11 @@
+/**
+ * @fileoverview auth.service.js
+ * @module auth/auth.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const jwt = require('jsonwebtoken');
 const User = require('./User.model');
 const AppError = require('../../utils/AppError');

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview authorize.js
+ * @module middleware/authorize.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const AppError = require('../utils/AppError');
 
 /**

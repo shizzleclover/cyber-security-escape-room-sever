@@ -1,3 +1,11 @@
+/**
+ * @fileoverview content.service.js
+ * @module content/content.service.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const Content = require('./Content.model');
 const AppError = require('../../utils/AppError');
 

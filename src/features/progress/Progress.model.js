@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Progress.model.js
+ * @module progress/Progress.model.js
+ * 
+ * Mongoose Database Model for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 
 const progressSchema = new mongoose.Schema(

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview index.js
+ * @module src/index.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');

@@ -1,3 +1,11 @@
+/**
+ * @fileoverview quiz.controller.js
+ * @module quiz/quiz.controller.js
+ * 
+ * Express Route Controller for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const asyncHandler = require('../../utils/asyncHandler');
 const quizService = require('./quiz.service');
 

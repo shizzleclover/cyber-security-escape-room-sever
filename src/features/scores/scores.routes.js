@@ -1,3 +1,11 @@
+/**
+ * @fileoverview scores.routes.js
+ * @module scores/scores.routes.js
+ * 
+ * Express Router Definition for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const express = require('express');
 const router = express.Router();
 const scoresController = require('./scores.controller');

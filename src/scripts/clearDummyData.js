@@ -1,3 +1,11 @@
+/**
+ * @fileoverview clearDummyData.js
+ * @module scripts/clearDummyData.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 const env = require('../config/env');
 const User = require('../features/auth/User.model');

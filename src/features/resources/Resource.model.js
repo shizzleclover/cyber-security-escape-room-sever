@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Resource.model.js
+ * @module resources/Resource.model.js
+ * 
+ * Mongoose Database Model for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 
 const RESOURCE_CATEGORIES = ['Reporting Fraud', 'Learning More', 'Password Tools', 'Get Help'];

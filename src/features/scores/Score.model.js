@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Score.model.js
+ * @module scores/Score.model.js
+ * 
+ * Mongoose Database Model for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const mongoose = require('mongoose');
 
 const scoreSchema = new mongoose.Schema(

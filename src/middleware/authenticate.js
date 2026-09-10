@@ -1,3 +1,11 @@
+/**
+ * @fileoverview authenticate.js
+ * @module middleware/authenticate.js
+ * 
+ * Utility/Service module for the CyberEscape platform.
+ * This file handles logic specific to its directory domain.
+ */
+
 const jwt = require('jsonwebtoken');
 const env = require('../config/env');
 const AppError = require('../utils/AppError');
